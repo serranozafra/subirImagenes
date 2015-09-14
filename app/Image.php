@@ -44,7 +44,7 @@ class Image extends Model implements AuthenticatableContract,
         Storage::get($this->path);
     }
 
-    public function getResizedImageAttribute()
+    public function getResizedImageAttributeOld()
     {
         if(file_exists($this->path))
         {
@@ -58,14 +58,14 @@ class Image extends Model implements AuthenticatableContract,
         }
     }
 
-    public function getResizedImageAttributeImgIntervention()
+    public function getResizedImageAttribute()
     {
         //return (url($this->path));
         if(File::exists($this->path))
         {
             $img = \Intervention\Image\Facades\Image::make($this->path);
-            $img->colorize(100, 100, 0);
-            $img->resize(300,null,function($bla){
+            //$img->colorize(100, 100, 0);
+            $img->resize(100,null,function($bla){
                $bla->aspectRatio();
             });
             $img->save($this->path."-thumb.jpg");

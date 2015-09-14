@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.css">
     </head>
     <body>
     <div class="container-fluid">
@@ -28,7 +30,7 @@
                     <tr>
                         <td>{{ $imagen->id }}</td>
                         <td>{{ $imagen->name }}</td>
-                        <td><img src='{{ url($imagen->resized_image) }}' /></td>
+                        <td><a href="{{ url($imagen->path) }}" data-lightbox="roadtrip"><img src='{{ url($imagen->resized_image) }}' /></a></td>
                     </tr>
                     @endforeach
                 </table>
@@ -41,3 +43,4 @@
 </html>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.js"></script>

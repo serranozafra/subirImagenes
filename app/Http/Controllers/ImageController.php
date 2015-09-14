@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -44,7 +45,7 @@ class ImageController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Redirector $redirect)
     {
         $rules = [
             'name' => 'required',
@@ -69,7 +70,7 @@ class ImageController extends Controller
             file_get_contents($request->file('path')->getRealPath())
         );
 
-        return view('imagenes');
+        return $redirect->route("imagenes.index");
 
         //Storage::put('file.jpg',$request);
     }
